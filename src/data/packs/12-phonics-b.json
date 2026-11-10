@@ -1,0 +1,32 @@
+{
+  "id": "phonics-b",
+  "group": "Phonics Workbook Words",
+  "title": "Phonics B",
+  "subtitle": "'th' & 'ch' Sound Words",
+  "emoji": "🤔",
+  "color": "#4D9DE0",
+  "order": 12,
+  "words": [
+    { "word": "The", "syllables": "The", "meaning": "A small helper word used before a specific thing", "emoji": "" },
+    { "word": "Them", "syllables": "Them", "meaning": "Refers to a group of other people, animals, or things", "emoji": "👨‍👩‍👧" },
+    { "word": "Then", "syllables": "Then", "meaning": "Next in order, or at that moment in a story", "emoji": "⏭️" },
+    { "word": "Thin", "syllables": "Thin", "meaning": "Slim and narrow, not thick or wide", "emoji": "🥢" },
+    { "word": "Think", "syllables": "Think", "meaning": "To use your brain to wonder, plan, or solve a puzzle", "emoji": "🤔" },
+    { "word": "Thing", "syllables": "Thing", "meaning": "Any object or toy you can point to", "emoji": "🧸" },
+    { "word": "This", "syllables": "This", "meaning": "Points to something right here in your hand or close by", "emoji": "👇" },
+    { "word": "Than", "syllables": "Than", "meaning": "Used when comparing two things, like 'bigger than'", "emoji": "⚖️" },
+    { "word": "Thank", "syllables": "Thank", "meaning": "To tell someone you are grateful for their kindness", "emoji": "🙏" },
+    { "word": "That", "syllables": "That", "meaning": "Points to a single person or thing farther away", "emoji": "👉" },
+    { "word": "Cloth", "syllables": "Cloth", "meaning": "Soft woven material used to make shirts and towels", "emoji": "🧵" },
+    { "word": "Moth", "syllables": "Moth", "meaning": "A furry insect like a butterfly that flies near lights at night", "emoji": "🦋" },
+    { "word": "With", "syllables": "With", "meaning": "Together side by side, or using something", "emoji": "🤝" },
+    { "word": "Chat", "syllables": "Chat", "meaning": "To have a cosy, friendly talk with a buddy", "emoji": "💬" },
+    { "word": "Chart", "syllables": "Chart", "meaning": "A big poster with pictures, numbers, or stars", "emoji": "📊" },
+    { "word": "Chick", "syllables": "Chick", "meaning": "A fluffy yellow baby bird that just hatched from an egg", "emoji": "🐤" },
+    { "word": "Chin", "syllables": "Chin", "meaning": "The bottom tip of your face right under your mouth", "emoji": "🧔" },
+    { "word": "Chips", "syllables": "Chips", "meaning": "Crispy golden pieces of fried potato", "emoji": "🍟" },
+    { "word": "Chop", "syllables": "Chop", "meaning": "To cut vegetables or wood into small pieces", "emoji": "🔪" },
+    { "word": "Much", "syllables": "Much", "meaning": "A big amount of something, like 'so much fun'", "emoji": "🎈" },
+    { "word": "Such", "syllables": "Such", "meaning": "Of that kind, or very great", "emoji": "✨" }
+  ]
+}

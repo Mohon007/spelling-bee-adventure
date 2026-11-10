@@ -1,0 +1,30 @@
+{
+  "id": "phonics-a",
+  "group": "Phonics Workbook Words",
+  "title": "Phonics A",
+  "subtitle": "Magic 'e' Words (i-e, o-e, u-e, a-e)",
+  "emoji": "🪄",
+  "color": "#E0A800",
+  "order": 11,
+  "words": [
+    { "word": "Bike", "syllables": "Bike", "meaning": "A two-wheeled cycle you ride by pushing the pedals", "emoji": "🚲" },
+    { "word": "Like", "syllables": "Like", "meaning": "To enjoy something or find it nice", "emoji": "👍" },
+    { "word": "Bite", "syllables": "Bite", "meaning": "To chomp into food using your teeth", "emoji": "🍎" },
+    { "word": "Kite", "syllables": "Kite", "meaning": "A colourful toy on a long string that flies high in the wind", "emoji": "🪁" },
+    { "word": "Dive", "syllables": "Dive", "meaning": "To jump smoothly headfirst into a swimming pool", "emoji": "🏊" },
+    { "word": "Five", "syllables": "Five", "meaning": "The number of fingers on one hand (5)", "emoji": "🖐️" },
+    { "word": "Line", "syllables": "Line", "meaning": "A long straight mark drawn on paper, or a neat row", "emoji": "📏" },
+    { "word": "Nine", "syllables": "Nine", "meaning": "The number that comes right before ten (9)", "emoji": "9️⃣" },
+    { "word": "Hide", "syllables": "Hide", "meaning": "To go somewhere secret so nobody can see you", "emoji": "🙈" },
+    { "word": "Wide", "syllables": "Wide", "meaning": "Measuring a big distance from one side to the other", "emoji": "↔️" },
+    { "word": "Wipe", "syllables": "Wipe", "meaning": "To rub something clean and dry with a cloth", "emoji": "🧽" },
+    { "word": "Hole", "syllables": "Hole", "meaning": "An open space dug in the ground or through something", "emoji": "🕳️" },
+    { "word": "Pole", "syllables": "Pole", "meaning": "A tall, straight round post made of wood or metal", "emoji": "🚩" },
+    { "word": "Joke", "syllables": "Joke", "meaning": "A funny story or trick that makes everyone giggle", "emoji": "😂" },
+    { "word": "June", "syllables": "June", "meaning": "The sixth month of the year, when summer begins", "emoji": "🌞" },
+    { "word": "Tune", "syllables": "Tune", "meaning": "A happy melody or song you can hum", "emoji": "🎵" },
+    { "word": "Came", "syllables": "Came", "meaning": "Past tense of come; arrived at a place", "emoji": "🚶" },
+    { "word": "Same", "syllables": "Same", "meaning": "Matching; exactly like another one", "emoji": "👯" },
+    { "word": "Gave", "syllables": "Gave", "meaning": "Past tense of give; shared a present with someone", "emoji": "🎁" }
+  ]
+}
