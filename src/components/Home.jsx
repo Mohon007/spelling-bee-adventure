@@ -4,7 +4,7 @@ import { ALL_WORDS, GROUPS, PACKS } from '../data/words';
 import { LEARNED_BOX, countAtLeast, countDue, streakNow } from '../lib/progress';
 import { plural } from '../lib/utils';
 
-export default function Home({ state, onPractice, onPack, onParent }) {
+export default function Home({ state, onPractice, onPack, onParent, onBook }) {
   const name = state.settings.name.trim();
   const learned = countAtLeast(state, ALL_WORDS, LEARNED_BOX);
   const due = countDue(state, ALL_WORDS);
@@ -48,6 +48,15 @@ export default function Home({ state, onPractice, onPack, onParent }) {
           </small>
         </span>
         <span className="cta-go">Go ➜</span>
+      </button>
+
+      <button type="button" className="practice-cta book-cta" onClick={onBook}>
+        <span className="cta-emoji" aria-hidden="true">📖</span>
+        <span className="cta-text">
+          <b>My Word Book</b>
+          <small>Read all {ALL_WORDS.length} words with their beats and meanings</small>
+        </span>
+        <span className="cta-go">Read ➜</span>
       </button>
 
       {GROUPS.map((group) => (

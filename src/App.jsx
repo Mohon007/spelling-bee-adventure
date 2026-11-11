@@ -3,6 +3,7 @@ import Home from './components/Home';
 import PackView from './components/PackView';
 import Session from './components/Session';
 import ParentCorner from './components/ParentCorner';
+import WordBook from './components/WordBook';
 import { ALL_WORDS, getPack } from './data/words';
 import { MODES } from './lib/modes';
 import { packRounds, practiceRounds } from './lib/rounds';
@@ -65,6 +66,7 @@ export default function App() {
             pack={pack}
             state={state}
             onBack={() => goTo(HOME)}
+            onBook={() => goTo({ name: 'book', packId: pack.id, back })}
             onMode={(mode) =>
               startSession(`${pack.title} · ${MODES[mode].title}`, (s) => packRounds(s, pack, mode), back)
             }
@@ -73,6 +75,14 @@ export default function App() {
         </main>
       );
     }
+  }
+
+  if (screen.name === 'book') {
+    return (
+      <main className="app">
+        <WordBook state={state} startPack={screen.packId} onBack={() => goTo(screen.back)} />
+      </main>
+    );
   }
 
   if (screen.name === 'parent') {
@@ -90,6 +100,7 @@ export default function App() {
         onPractice={() => startSession("Today's Practice", (s) => practiceRounds(s, ALL_WORDS), HOME)}
         onPack={(packId) => goTo({ name: 'pack', packId })}
         onParent={() => goTo({ name: 'parent' })}
+        onBook={() => goTo({ name: 'book', packId: 'all', back: HOME })}
       />
     </main>
   );

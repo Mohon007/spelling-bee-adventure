@@ -2,7 +2,7 @@ import { Meter, StarLevel } from './ui';
 import { MODES, MODE_ORDER } from '../lib/modes';
 import { LEARNED_BOX, countAtLeast, getBox } from '../lib/progress';
 
-export default function PackView({ pack, state, onBack, onMode, onWord }) {
+export default function PackView({ pack, state, onBack, onMode, onWord, onBook }) {
   const learned = countAtLeast(state, pack.words, LEARNED_BOX);
 
   return (
@@ -10,6 +10,9 @@ export default function PackView({ pack, state, onBack, onMode, onWord }) {
       <div className="topbar">
         <button type="button" className="btn c-white" onClick={onBack}>
           ⬅ Home
+        </button>
+        <button type="button" className="btn c-honey" onClick={onBook}>
+          📖 Read words
         </button>
       </div>
 

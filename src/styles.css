@@ -378,6 +378,89 @@ button:focus-visible { outline: 4px solid var(--ink); outline-offset: 3px; }
 .science { margin: 0; padding-left: 20px; display: grid; gap: 8px; color: var(--ink-2); }
 .science b { color: var(--ink); }
 
+/* ---------- Word Book ---------- */
+.book-cta {
+  background: linear-gradient(135deg, #8fd3ff 0%, var(--sky) 100%);
+  box-shadow: 0 7px 0 var(--sky-d), 0 18px 30px rgba(47, 123, 191, 0.25);
+  color: #fff;
+}
+.book-cta:active { box-shadow: 0 2px 0 var(--sky-d); }
+.book-cta .cta-text small { color: #eaf5ff; }
+.book-cta .cta-emoji { animation: none; }
+
+.book-top {
+  position: sticky; top: 0; z-index: 20;
+  display: flex; align-items: center; gap: 14px;
+  margin: -16px -16px 0; padding: 12px 16px;
+  background: rgba(255, 248, 231, 0.94);
+  backdrop-filter: blur(6px);
+  border-bottom: 2px solid var(--line);
+}
+.book-top h1 { font-size: clamp(1.4rem, 5vw, 2rem); }
+.book-help { margin: 0; font-size: 1.15rem; color: var(--ink-2); }
+
+.book-search {
+  font: inherit; font-size: 1.2rem; width: 100%; max-width: 420px;
+  padding: 12px 16px; border-radius: 18px; border: 3px solid var(--line); background: #fff;
+}
+.book-search:focus { outline: 3px solid var(--honey); border-color: var(--honey-d); }
+
+.book-filter { display: flex; gap: 8px; overflow-x: auto; padding: 4px 2px 8px; scrollbar-width: thin; }
+.filter-chip {
+  flex-shrink: 0; padding: 10px 16px; border-radius: 999px; background: #fff;
+  border: 2px solid var(--line); font-weight: 600; white-space: nowrap;
+}
+.filter-chip.on { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+.book-section { --c: var(--sky); display: flex; flex-direction: column; gap: 12px; }
+.book-section-head {
+  display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-radius: 22px;
+  background: color-mix(in srgb, var(--c) 14%, white);
+  border: 3px solid color-mix(in srgb, var(--c) 35%, white);
+}
+.book-section-head h2 { font-size: 1.4rem; display: flex; align-items: center; gap: 8px; }
+.book-section-head p { margin: 2px 0 0; color: var(--ink-2); }
+.book-section-emoji { font-size: 2rem; }
+
+.book-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 12px; }
+.book-card {
+  display: flex; flex-direction: column; gap: 10px; padding: 14px;
+  background: var(--card); border-radius: 22px; border: 2px solid var(--line); box-shadow: 0 4px 0 var(--line);
+}
+.book-head { display: flex; align-items: center; gap: 10px; }
+.book-num {
+  width: 32px; height: 32px; flex-shrink: 0; display: grid; place-items: center; border-radius: 50%;
+  background: #f6efdc; color: var(--ink-2); font-weight: 600; font-size: 0.9rem;
+}
+.book-pic { font-size: 2rem; }
+.book-word { flex: 1; min-width: 0; font-size: 1.9rem; font-weight: 700; word-break: break-word; }
+
+.book-syls {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 6px; padding: 8px;
+  border-radius: 16px; background: #fbf7ec; text-align: left;
+}
+.bsyl { padding: 4px 12px; border-radius: 12px; font-size: 1.4rem; font-weight: 700; transition: transform 0.15s; }
+.bsyl-0 { background: #e3f0ff; color: var(--sky-d); }
+.bsyl-1 { background: #ffe1ec; color: var(--berry-d); }
+.bsyl-2 { background: #dff5e8; color: var(--grass-d); }
+.bsyl-3 { background: #ebe6ff; color: var(--grape-d); }
+.bsyl-4 { background: #fff1c7; color: #8a6700; }
+.bsyl.lit { transform: scale(1.2) rotate(-3deg); box-shadow: 0 3px 0 rgba(43, 45, 66, 0.2); }
+
+.book-meaning { display: flex; align-items: flex-start; gap: 8px; }
+.book-meaning p { margin: 0; flex: 1; font-size: 1.1rem; color: var(--ink-2); }
+.mini-btn { flex-shrink: 0; width: 40px; height: 40px; border-radius: 12px; background: #eef5ff; font-size: 1.1rem; }
+.mini-btn:active { transform: translateY(2px); }
+
+.book-empty { text-align: center; font-size: 1.2rem; color: var(--ink-2); }
+.book-bottom { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 8px; }
+
+@media (max-width: 560px) {
+  .book-top { margin: -12px -16px 0; }
+  .book-grid { grid-template-columns: 1fr; }
+  .book-word { font-size: 1.6rem; }
+}
+
 /* ---------- Animations ---------- */
 @keyframes pop-in { from { transform: scale(0.92); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 @keyframes slide-up { from { transform: translateY(16px); opacity: 0; } to { transform: none; opacity: 1; } }
