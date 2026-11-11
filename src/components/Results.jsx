@@ -1,10 +1,12 @@
 import { useEffect } from 'react';
 import Bee from './Bee';
+import FairyRescue from './FairyRescue';
 import { speak } from '../lib/speech';
 import { sfx } from '../lib/sound';
 import { plural } from '../lib/utils';
 
-export default function Results({ results, onAgain, onBack }) {
+export default function Results({ results, rescue = null, onAgain, onBack }) {
+  const freed = rescue ? rescue.got >= rescue.need : false;
   const scored = results.filter((r) => r.correct !== null);
   const stars = scored.filter((r) => r.correct).length;
   const met = results.filter((r) => r.correct === null).length;
@@ -23,8 +25,9 @@ export default function Results({ results, onAgain, onBack }) {
 
   useEffect(() => {
     sfx.win();
+    const fairyLine = rescue ? (freed ? 'You set Twinkle the fairy free! ' : 'Twinkle is almost free! ') : '';
     const line = scored.length
-      ? `${headline} You earned ${plural(stars, 'star')}!`
+      ? `${fairyLine}${headline} You earned ${plural(stars, 'star')}!`
       : `Hooray! You met ${plural(met, 'new word')}!`;
     const t = setTimeout(() => speak(line), 500);
     return () => clearTimeout(t);
@@ -34,7 +37,11 @@ export default function Results({ results, onAgain, onBack }) {
 
   return (
     <div className="results">
-      <Bee size={140} cheer className="bob" />
+      {rescue ? (
+        <FairyRescue need={rescue.need} got={rescue.got} wrong={rescue.wrong} big ended />
+      ) : (
+        <Bee size={140} cheer className="bob" />
+      )}
       <h1>{headline}</h1>
 
       {scored.length > 0 && (

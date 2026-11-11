@@ -61,6 +61,14 @@ export function practiceRounds(state, allWords) {
   return [...learn, ...quiz];
 }
 
+// Games for words the child missed: meet each word again, then practise it.
+export function reviseRounds(words) {
+  const list = shuffle(words).slice(0, 8);
+  const learn = list.map((word) => ({ mode: 'learn', word }));
+  const quiz = shuffle(list).map((word) => ({ mode: sample(['missing', 'spell', 'spell']), word }));
+  return [...learn, ...quiz];
+}
+
 export function packRounds(state, pack, mode) {
   const words = mode === 'learn' ? pickToLearn(state, pack.words) : pickForPack(state, pack.words);
   return words.map((word) => ({ mode, word }));

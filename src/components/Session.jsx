@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import Confetti from './Confetti';
 import Results from './Results';
+import FairyRescue, { rescueNeed } from './FairyRescue';
+import { sfx } from '../lib/sound';
 import LearnRound from './rounds/LearnRound';
 import ClapRound from './rounds/ClapRound';
 import SpellRound from './rounds/SpellRound';
@@ -26,9 +28,17 @@ export default function Session({ title, rounds, allWords, actions, onExit, onAg
   const Round = round ? ROUNDS[round.mode] : null;
   const pct = Math.round((Math.min(index, total) / total) * 100);
 
+  // Fairy rescue: right answers break the cage bars.
+  const need = rescueNeed(rounds.filter((r) => r.mode !== 'learn').length);
+  const got = results.filter((r) => r.correct === true).length;
+  const wrong = results.filter((r) => r.correct === false).length;
+  const lastScored = [...results].reverse().find((r) => r.correct !== null);
+  const mood = lastScored ? (lastScored.correct ? 'happy' : 'oops') : null;
+
   function handleDone(correct) {
     if (correct === null) actions.introduce(round.word.id);
     else actions.answer(round.word.id, correct);
+    if (correct === true && got + 1 === need) setTimeout(() => sfx.sparkle(), 300);
     setResults((list) => [...list, { word: round.word, mode: round.mode, correct }]);
     setIndex((i) => i + 1);
   }
@@ -52,8 +62,10 @@ export default function Session({ title, rounds, allWords, actions, onExit, onAg
       </div>
       <p className="session-title">{title}</p>
 
+      {!finished && <FairyRescue need={need} got={got} wrong={wrong} mood={mood} />}
+
       {finished ? (
-        <Results results={results} onAgain={onAgain} onBack={onExit} />
+        <Results results={results} rescue={need ? { need, got, wrong } : null} onAgain={onAgain} onBack={onExit} />
       ) : (
         <Round
           key={index}

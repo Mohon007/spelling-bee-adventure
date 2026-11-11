@@ -1,10 +1,15 @@
+import { useState } from 'react';
 import Bee from './Bee';
+import NameModal from './NameModal';
 import { Meter } from './ui';
 import { ALL_WORDS, GROUPS, PACKS } from '../data/words';
 import { LEARNED_BOX, countAtLeast, countDue, streakNow } from '../lib/progress';
 import { plural } from '../lib/utils';
 
-export default function Home({ state, onPractice, onPack, onParent, onBook }) {
+export default function Home({ state, onPractice, onPack, onParent, onBook, onAsk, onSettings }) {
+  // Show the name popup the first time the game opens.
+  const [askName, setAskName] = useState(() => !state.settings.name.trim() && !state.settings.askedName);
+  const reviseCount = Object.values(state.check).filter((c) => c.status === 'revise').length;
   const name = state.settings.name.trim();
   const learned = countAtLeast(state, ALL_WORDS, LEARNED_BOX);
   const due = countDue(state, ALL_WORDS);
@@ -16,7 +21,12 @@ export default function Home({ state, onPractice, onPack, onParent, onBook }) {
         <Bee size={112} className="bob" />
         <div>
           <p className="eyebrow">Spelling Bee Adventure</p>
-          <h1>Hi, {name || 'Super Speller'}!</h1>
+          <h1>
+            Hi, {name || 'Super Speller'}!{' '}
+            <button type="button" className="edit-name" onClick={() => setAskName(true)} aria-label="Change name">
+              ✏️
+            </button>
+          </h1>
           <p className="hero-sub">Look, listen, clap and spell. Let's grow your word garden!</p>
         </div>
       </header>
@@ -59,6 +69,18 @@ export default function Home({ state, onPractice, onPack, onParent, onBook }) {
         <span className="cta-go">Read ➜</span>
       </button>
 
+      <button type="button" className="practice-cta ask-cta" onClick={onAsk}>
+        <span className="cta-emoji" aria-hidden="true">🧑‍🏫</span>
+        <span className="cta-text">
+          <b>Ask My Kid</b>
+          <small>
+            Spelling check with a grown-up
+            {reviseCount > 0 ? ` · ${plural(reviseCount, 'word')} to revise` : ''}
+          </small>
+        </span>
+        <span className="cta-go">Ask ➜</span>
+      </button>
+
       {GROUPS.map((group) => (
         <section key={group}>
           <h2 className="section-title">{group}</h2>
@@ -86,6 +108,20 @@ export default function Home({ state, onPractice, onPack, onParent, onBook }) {
           ⚙️ Grown-ups corner
         </button>
       </footer>
+
+      {askName && (
+        <NameModal
+          initialName={name}
+          onSave={(newName) => {
+            onSettings({ name: newName, askedName: true });
+            setAskName(false);
+          }}
+          onSkip={() => {
+            onSettings({ askedName: true });
+            setAskName(false);
+          }}
+        />
+      )}
     </div>
   );
 }

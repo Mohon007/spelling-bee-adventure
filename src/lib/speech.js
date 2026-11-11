@@ -1,7 +1,7 @@
 // Text-to-speech using the browser's built-in voices (no audio files needed).
 const synth = typeof window !== 'undefined' ? window.speechSynthesis : undefined;
 
-let rate = 0.85;
+let rate = 0.7;
 let voice = null;
 
 const PREFERRED = [

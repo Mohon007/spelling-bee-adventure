@@ -4,9 +4,10 @@ import PackView from './components/PackView';
 import Session from './components/Session';
 import ParentCorner from './components/ParentCorner';
 import WordBook from './components/WordBook';
+import AskMyKid from './components/AskMyKid';
 import { ALL_WORDS, getPack } from './data/words';
 import { MODES } from './lib/modes';
-import { packRounds, practiceRounds } from './lib/rounds';
+import { packRounds, practiceRounds, reviseRounds } from './lib/rounds';
 import { setRate, stopSpeech } from './lib/speech';
 import { setSoundOn } from './lib/sound';
 import { useProgress } from './lib/useProgress';
@@ -85,6 +86,19 @@ export default function App() {
     );
   }
 
+  if (screen.name === 'ask') {
+    return (
+      <main className="app">
+        <AskMyKid
+          state={state}
+          actions={actions}
+          onBack={() => goTo(HOME)}
+          onPlay={(words) => startSession('Revise games', () => reviseRounds(words), { name: 'ask' })}
+        />
+      </main>
+    );
+  }
+
   if (screen.name === 'parent') {
     return (
       <main className="app">
@@ -101,6 +115,8 @@ export default function App() {
         onPack={(packId) => goTo({ name: 'pack', packId })}
         onParent={() => goTo({ name: 'parent' })}
         onBook={() => goTo({ name: 'book', packId: 'all', back: HOME })}
+        onAsk={() => goTo({ name: 'ask' })}
+        onSettings={actions.setSettings}
       />
     </main>
   );
